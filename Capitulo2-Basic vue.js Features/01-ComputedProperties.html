@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>01- Computed properties</h1>
+    <div id="app">
+        <input type="text" v-model="name">
+        <input type="text" id="surname" value="Snow">
+        <button @click="saveSurname">Save surname</button>
+        <output>{{ computedFullName }}</output>
+    </div>
+</body>
+<script>
+
+    let surname = 'Snow'
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'John'
+        },
+        computed: {
+            computedFullName() {
+                return this.name + ' ' + surname
+            }
+        },
+        methods: {
+            saveSurname() {
+                surname = this.$el.querySelector('#surname')
+            }
+        }
+    })
+</script>
+</html>

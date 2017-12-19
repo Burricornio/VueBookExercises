@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 2s;
+    }
+    .fade-enter, .fade-leave {
+        opacity: 0;
+    }
+    p {
+        margin: 0;
+        position: absolute;
+        font-size: 3em;
+    }
+    </style>
+</head>
+<body>
+    <h1>05- Transitioning between elements</h1>
+    <div id="app">
+        <button @click="kisses++">💋 Kiss!</button>
+        <transition name="fade">
+            <p v-if="kisses < 3" key="frog">🐸 Frog!</p>
+            <p v-if="kisses >= 3" key="princess">👸 Princess!</p>
+        </transition>
+    </div>
+</body>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        kisses: 0
+    }
+})
+       
+</script>
+</html>

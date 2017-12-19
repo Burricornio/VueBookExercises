@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>17- Creating a form with select elements</h1>
+    <div id="app">
+        <form>
+            <fieldset>
+                <legend>Choose your country</legend>
+                <select v-model="choosenCountry">
+                    <option selected>Japan</option>
+                    <option>India</option>
+                    <option>Canada</option>
+                </select>
+            </fieldset>
+        </form>
+        <div>{{ choosenCountry }}</div>
+    </div>
+</body>
+
+<script>
+new Vue({
+    el: '#app',
+   data: {
+       choosenCountry: undefined
+   }
+
+})
+       
+</script>
+</html>

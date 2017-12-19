@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        .disappear-leave-active {
+            transition: all 1s;
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+    </style>
+
+</head>
+<body>
+    <h1>09-Adding entering and leaving transitions for elements of a list</h1>
+    <div id="app">
+       <h3>Syllabus</h3>
+       <transition-group tag="ul" name="disappear">
+           <li v-for="topic in syllabus" :key="topic">
+              <button @click="completed(topic)">Done</button> {{ topic }}
+            </li>
+        </transition-group>
+    </div>
+</body>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        syllabus: [
+            'HTML',
+            'CSS',
+            'Scratch',
+            'Javascript',
+            'Python'
+        ]
+    },
+    methods: {
+
+        completed: function(topic) {
+            let index = this.syllabus.indexOf(topic)
+            this.syllabus.splice(index, 1)
+        }
+    }
+   
+})
+       
+</script>
+</html>

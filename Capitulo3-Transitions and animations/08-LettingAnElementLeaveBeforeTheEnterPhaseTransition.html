@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+    .slide-enter-active, .slide-leave-active {
+        transition: transform 2s;
+    }
+    .slide-enter {
+        transform: translateX(300px);
+    }
+    .slide-leave-active {
+        transform: translateX(-300px);
+    }
+    p {
+        margin: 0;
+        position: absolute;
+        font-size: 3em;
+    }
+    </style>
+</head>
+<body>
+    <h1>08- Letting an element leave before the enter phase in a transition</h1>
+    <div id="app">
+        <button @click="product++">Next</button>
+        <transition name="slide">
+           <p :key="products[product % 4]">{{ products[product % 4] }}</p>
+        </transition>
+    </div>
+</body>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        product: 0,
+        products: ['🌂 umbrella', '👠 shoe', '🏀 ball', '🎮 play']
+    }
+})
+       
+</script>
+</html>

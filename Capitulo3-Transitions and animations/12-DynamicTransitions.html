@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magic/1.1.0/magic.css">
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 2s;
+        }
+        .fade-enter, .fade-leave-active {
+            opacity: 0;
+        }
+        .zoom-leave-active, .zoom-enter-active {
+            transition: transform 2s;
+        }
+        .zoom-leave-active, .zoom-enter {
+            transform: scale(0)
+        }
+        p   {
+            margin: 0; 
+            position: absolute; 
+            font-size: 3em;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>12- Dynamic transitions</h1>
+    <div id="app">
+        <button @click="kisses++">💋 Kiss!</button>
+        <transition :name="kindOfTransformation" :mode="transformationMode">
+            <p :key="transformation">{{ emoji }} {{ transformation }}</p>
+        </transition>
+    </div>
+</body>
+
+<script>
+
+new Vue({
+    el: '#app',
+    data: {
+        kisses: 0,
+        kindOfTransformation: 'fade',
+        transformationMode: 'in-out'
+    },
+    computed: {
+        transformation() {
+            if (this.kisses < 3) {
+                return 'frog'
+            }
+            if (this.kisses >= 3 && this.kisses <= 5) {
+                this.transformationMode = 'out-in'
+                return 'princess'
+            } 
+            if (this.kisses >5) {
+                this.kindOfTransformation = 'zoom'
+                return 'santa'
+            }
+        },
+        emoji() {
+            switch (this.transformation) {
+                case 'frog': return '🐸'
+                case 'princess': return '👸'
+                case 'santa': return '🎅🏻'
+            }
+        }
+    }
+
+})
+       
+</script>
+</html>

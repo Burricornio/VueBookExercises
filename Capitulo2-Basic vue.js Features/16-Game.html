@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>16- Game</h1>
+    <div id="app">
+        <form>
+            <fieldset>
+                <legend>Today's animal</legend>
+                    <label>
+                        <input type="radio" v-model="animal" :value="animals[i]">
+                        {{animals[i]}}
+                    </label> <br>
+                    <label>
+                        <input type="radio" v-model="animal" :value="animals[i+1]"/>
+                        {{ animals[i+1] }}
+                    </label> <br>     
+                    <input type="submit" value="Add to Farm" @click.prevent="addToFarm"/>      
+            </fieldset>
+        </form>
+        <div>Your farm is composed by {{ farm.join(' ')}}</div>
+    </div>
+</body>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+       animals: [ '🐶', '🐷', '🐸 '],
+       animal: undefined,
+       farm: [],
+       i: 0
+    },
+    methods: {
+        addToFarm() {
+            if(this.animal === undefined) {
+                return
+            }
+            this.farm.push(this.animal)
+            this.i = Math.floor(Math.random() * (this.animals.length - 1))
+        this.animal = undefined;
+        }
+    }
+
+})
+       
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 2s;
+    }
+    .fade-enter, .fade-leave {
+        opacity: 0;
+    }
+    p {
+        margin: 0;
+        position: absolute;
+        font-size: 3em;
+    }
+    </style>
+</head>
+<body>
+    <h1>07- Positioning between more than two elements</h1>
+    <div id="app">
+        <button @click="kisses++">💋 Kiss!</button>
+        <transition name="fade">
+           <p :key="transformation">{{ emoji }} {{ transformation }}</p>
+        </transition>
+    </div>
+</body>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        kisses: 0
+    },
+    computed: {
+        transformation () {
+            if (this.kisses < 3) {
+                return 'frog'
+            }
+            if (this.kisses >= 3 && this.kisses <= 5) {
+                return 'princess'
+            } else {
+                return 'santa'
+            }
+        },
+        emoji () {
+            switch (this.transformation) {
+                case 'frog': return '🐸'
+                case 'princess': return '👸'
+                case 'santa': return '🎅🏻'
+
+            }
+        }
+    },
+})
+       
+</script>
+</html>

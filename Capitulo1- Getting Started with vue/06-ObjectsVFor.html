@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>06- Objects (v-for)</h1>
+    <div id="app">
+        <ul>
+            <li v-for="(name, sound) in animals">
+                The {{ name }} goes {{ sound }}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+
+           animals: {
+                dog: 'woof',
+                cat: 'meow',
+                bird: 'tweet'
+           }
+        }
+    })
+</script>
+</html>

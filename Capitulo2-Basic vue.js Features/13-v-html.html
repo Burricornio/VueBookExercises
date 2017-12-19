@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>13- Outputting raw HTML</h1>
+    <div id="app" v-html="htmlTexts[0]"></div>
+</body>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+       htmlTexts: [
+       'Dear John,<br/>thank you for the <pre>Batman vs Superman</pre> DVD!',
+       'Dear John,<br/>thank you for <i>Ghostbusters 3</i>!',
+       'Dear John,<br/>thanks, <b>Gods of Egypt</b> is my new favourite!'
+       ]
+    }
+})
+       
+</script>
+</html>

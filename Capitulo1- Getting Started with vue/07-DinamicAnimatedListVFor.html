@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>07- Dinamin Animated List (v-for)</h1>
+    <div id="app">
+        <ul>
+            <li v-for="n in countdown">{{n}}</li>
+            <!-- <li>{{ countdown.length === 10 ? 'Launch missile' : '...'}}</li> -->
+            <li v-show="countdown.length === 10">Launch missile!</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var counter = 10;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            countdown: []
+        }
+    })
+    setInterval(() => {
+        if(counter > 0) {
+            vm.countdown.push(counter--)
+        }
+    }, 1000)
+</script>
+</html>

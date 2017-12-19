@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/accounting.js/0.3.2/accounting.js"></script>
+    <style>
+        .price {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h1>09- Displaying and hiding an element conditionally</h1>
+    <div id="ghost">
+       <div v-show="isNight"> <!-- Con v-show el elemnto esta oculto. Con v-if ni siquiera se renderiza-->
+           I'm a ghost! Boo!
+       </div>
+   </div>
+</body>
+<script>
+
+
+new Vue({
+     el: '#ghost',
+     computed: {
+         isNight() {
+             var date = new Date().getHours()
+             if(date > 19) {
+                return true
+             } else {
+                return false
+             }  
+         }
+     }
+})
+       
+</script>
+</html>

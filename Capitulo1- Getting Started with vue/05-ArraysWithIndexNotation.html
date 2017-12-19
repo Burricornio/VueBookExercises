@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>05- Arrays con indice (v-for)</h1>
+    <div id="app">
+        <ul>
+            <li v-for="(animal, index) in animals">
+                The {{ animal }} goes {{ sounds[index] }}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            animals: ['dog', 'cat', 'bird'],
+            sounds: ['woof', 'meow', 'tweet']
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>10- v-model 2</h1>
+    <div id="app">
+        <ul>
+            <li v-for="(world, index) in worlds">
+                {{ world }}
+                <button @click="worlds.splice(index, 1)">Zap!</button>
+            </li>
+        </ul>
+        <input type="text" v-model="newWorld">
+        <button @click="worlds.push(newWorld)">Conquer</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+
+        data: {
+            worlds: ['Terran', 'L24-D', 'Ares', 'New Kroy', 'Sebek', 'Vestra'],
+            newWorld: ''
+        }
+    })
+</script>
+</html>

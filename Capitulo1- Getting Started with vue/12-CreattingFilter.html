@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2 - Cookbook</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>12- Creating Capitalize Filter</h1>
+    <div id="app">
+       {{ 'hello lemmy' | capitalize }}
+    </div>
+</body>
+<script>
+
+    // Vue.filter('capitalize', function (string) {
+    //     var capitalFirst = string.charAt(0).toUpperCase();
+    //     var noCaseTail = string.slice(1, string.length);
+    //     return capitalFirst + noCaseTail;
+    // })
+
+    // ES6
+    Vue.filter('capitalize', (string) => {
+     var [first, ...tail] = string
+     return first.toUpperCase() + tail.join('')
+    })
+    
+    new Vue({
+        el: '#app',
+    })
+</script>
+</html>
